@@ -1,6 +1,9 @@
 html, body {
   font-family: 'Roboto', sans-serif;
-  font-size: 3vw;
+/*  background-color: #1c007d;
+  background-image: url("../images/jeopardyset.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;*/
 }
 .flex {
   display: flex;
@@ -37,20 +40,20 @@ html, body {
 }
 .questionPicker .title{
   height: 20vh;
+  font-size: 3vw;
   border: 1vw solid black;
   color: white;
 }
 .questionPicker .points{
-  font-size:10vw;
+  font-size: 9vw;
   color: #d69f4c;
   height: 20vh;
   border: 1vw solid black;
 }
 .answerViewer{
+  font-family: 'Vollkorn', serif;
   padding:2vw;
   display: none;
-  position: fixed;
-  /*top: 50vh;*/
   position: fixed;
   width:100%;
   height:100%;
@@ -68,16 +71,14 @@ html, body {
   font-size: 4vw;
 
 }
+.small{
+  font-size: 3vw;
+}
 .input{
-  font-size:2vw;
+  font-size:4vw;
 }
 .submitButton{
-  font-size:2vw;
-}
-#scoreHolder{
-  position: fixed;
-  right: 2vw;
-  top: 5vh;
+  font-size:4vw;
 }
 #intro{
   width:100vw;
@@ -85,4 +86,52 @@ html, body {
 #gipparodyTitle{
   font-family: 'gyparodyheavy';
   font-size: 15vw;
+}
+#player{
+  display: none;
+  background-image: url("../images/jeopardy1996podium-single.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: 0;
+  bottom: 0;
+  width: 333px;
+  height: 362px;
+  position: fixed;
+}
+#scoreHolder{
+  position: absolute;
+  right: 6rem;
+  top: 1.3rem;
+  font-family: 'Anton', sans-serif;
+  color: white;
+  text-shadow: .1rem .1rem black;
+  font-size: 3rem;
+  text-align: center;
+}
+#playerSign{
+  position: absolute;
+  right: 6rem;
+  top: 8rem;
+  width: 10rem;
+  color: white;
+  text-shadow: .3rem .3rem black;
+  font-size: 1.7rem;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+}
+#results{
+  position: absolute;
+  top: 0;
+  /*top: 33vh;
+  left: 33vw;*/
+  display:none;
+  font-size: 3vw;
+  text-align: center;
+  color: white;
+  background-color: #1c007d;
+  width:100vw;
+  height:100vh;
+}
+#correctResult, #incorrectResult{
+  display: none;
 }
