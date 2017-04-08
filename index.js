@@ -25,6 +25,8 @@ function Answer (categoryId, category, answerId, answer, question, points){
     this.toggleAnswer();
   }
   this.showAnswer = function(event) {
+    getGiphy("yeah");
+    getGiphy("nope");
     console.log("click", this.answerId);
     this.toggleAnswer();
     //document.getElementById(this.answerId).style.transform="translateY(0%)";
@@ -91,3 +93,13 @@ function getStarted(){
 }
 document.getElementById("submitUserName").addEventListener('click', getStarted);
 //getStarted();
+function getGiphy(searchFor){
+  fetch("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag="+searchFor)
+    .then(response => response.json())
+    .then(object => {
+      console.log(object.data.image_url);
+      console.log(searchFor);
+      document.getElementById(searchFor).src=object.data.image_url;
+    }
+  )
+}
