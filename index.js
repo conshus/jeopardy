@@ -27,6 +27,7 @@ function Answer (categoryId, category, answerId, answer, question, points){
   this.showAnswer = function(event) {
     getGiphy("yeah");
     getGiphy("nope");
+    document.getElementById("correctAnswer").textContent = this.question;
     console.log("click", this.answerId);
     this.toggleAnswer();
     //document.getElementById(this.answerId).style.transform="translateY(0%)";
