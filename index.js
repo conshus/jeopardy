@@ -33,6 +33,8 @@ function Answer (categoryId, category, answerId, answer, question, points){
     //document.getElementById(this.answerId).style.transform="translateY(0%)";
     //document.querySelector(".questionPicker").style.display = "none";
     document.getElementById(this.answerId).style.display = "block";
+    //start timer
+    document.getElementById("thinkSong").play();
   }
   this.display = function () {
     let source = document.querySelector('#gipparody-template').innerHTML;
@@ -45,6 +47,9 @@ function Answer (categoryId, category, answerId, answer, question, points){
     document.getElementById(submitId).addEventListener('click', this.isCorrect.bind(this));
   }
   this.showResult =function (result){
+    document.getElementById("thinkSong").pause();
+    document.getElementById("thinkSong").currentTime = 0;
+    document.getElementById(result+"Sound").play();
     document.getElementById("results").style.display = "block";
     document.getElementById(result).style.display = "block";
     setTimeout(function(){
@@ -90,6 +95,8 @@ function getStarted(){
     getCategories();
     document.getElementById("player").style.display = "block";
     document.getElementById("playerSign").textContent=document.getElementById("playerName").value;
+    document.getElementById("themeSong").pause();
+
   }
 }
 document.getElementById("submitUserName").addEventListener('click', getStarted);

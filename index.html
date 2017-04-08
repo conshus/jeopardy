@@ -48,10 +48,28 @@
       <div class=" flex vcenter flexcolumn hcenter">
         {{answer}}
         <br /><input type="text" class="input" id="input{{answerId}}" placeholder="Who/What is/are..."></input><button id="submit{{answerId}}" class="submitButton">Guess</button>
+        <br />{{category}}
         <br />${{points}}
+        <div>:<span id="timer">30</span></div>
       </div>
     </div>
   </script>
+  <audio autoplay id="themeSong">
+    <source src="sounds/Jeopardy-1984-1991.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="thinkSong">
+    <source src="sounds/Jeopardy-think-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="correctResultSound">
+    <source src="sounds/woo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="incorrectResultSound">
+    <source src="sounds/boo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   <script type="text/javascript" src="index.js" charset="utf-8"></script>
 </body>
 </html>
