@@ -1,4 +1,16 @@
 let score = 0;
+
+//clear all timers start
+let countdownTimerCount = 0;
+let countdownTimerArray =[];
+function clearAllCountdwnTimers (){
+  for (i=0; i<countdownTimerArray.length; i++){
+    clearInterval(countdownTimerArray[i]);
+  }
+}
+
+//clear all timers end
+
 function Answer (categoryId, category, answerId, answer, question, points){
   this.categoryId = categoryId;
   this.category = category;
@@ -7,6 +19,10 @@ function Answer (categoryId, category, answerId, answer, question, points){
   this.question = question;
   this.points = points;
   this.isCorrect = function(event) {
+    clearAllCountdwnTimers();
+    //clearInterval(countdownTimer);
+    //let countdownTimerId = "countdownTimer"+this.answerId;
+    //clearInterval(countdownTimerId);
     console.log("click", this.answerId, event);
     console.log(this.question);
     let inputId = "input"+this.answerId;
@@ -34,6 +50,24 @@ function Answer (categoryId, category, answerId, answer, question, points){
     //document.querySelector(".questionPicker").style.display = "none";
     document.getElementById(this.answerId).style.display = "block";
     //start timer
+    let countdown=32;
+    let that = this; //Not sure why I had to do this to invoke isCorrect properly
+    //clearInterval(countdownTimer);
+    //let countdownTimerId = "countdownTimer"+this.answerId;
+    let countdownTimerIdInterval = setInterval(function(){
+      //console.log(countdown);
+      countdown--;
+      let countdownTimerId = that.answerId+"timer";
+      document.getElementById(countdownTimerId).innerHTML=countdown;
+      if (countdown == 0){
+        that.isCorrect();
+        //that.toggleAnswer();
+        //that.showResult("incorrectResult");
+        clearInterval(countdownTimerIdInterval);
+      }
+    },1000);
+    countdownTimerArray[countdownTimerCount] = countdownTimerIdInterval;
+    countdownTimerCount++
     document.getElementById("thinkSong").play();
   }
   this.display = function () {

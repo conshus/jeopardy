@@ -29,11 +29,11 @@
     <div class="flex flexcolumn hcenter vcenter">
       <div id="correctResult">
         <img id="yeah" src="https://media.giphy.com/media/clyiczzAhAJUc/giphy.gif">
-        <br />Yeah! You Got it Right!
+        <!--<br />Yeah! You Got it Right!-->
       </div>
       <div id="incorrectResult">
         <img id="nope" src="https://media.giphy.com/media/BNKJXXLsbsPHW/giphy.gif">
-        <br />You said whaaaat?! Wrong.
+        <!--<br />You said whaaaat?! Wrong.-->
         <br /><br />Correct answer: <span id="correctAnswer"></span>
       </div>
     </div>
@@ -50,7 +50,7 @@
         <br /><input type="text" class="input" id="input{{answerId}}" placeholder="Who/What is/are..."></input><button id="submit{{answerId}}" class="submitButton">Guess</button>
         <br />{{category}}
         <br />${{points}}
-        <div>:<span id="timer">30</span></div>
+        <div>:<span id="{{answerId}}timer">30</span></div>
       </div>
     </div>
   </script>
