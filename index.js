@@ -42,7 +42,9 @@ function Answer (categoryId, category, answerId, answer, question, points){
   }
   this.showAnswer = function(event) {
     getGiphy("yeah");
+    getSoundEffectInfo("yay");
     getGiphy("nope");
+    getSoundEffectInfo("crowd+boo");
     document.getElementById("correctAnswer").textContent = this.question;
     console.log("click", this.answerId);
     this.toggleAnswer();
@@ -89,6 +91,8 @@ function Answer (categoryId, category, answerId, answer, question, points){
     setTimeout(function(){
       document.getElementById("results").style.display = "none";
       document.getElementById(result).style.display = "none";
+      document.getElementById(result+"Sound").pause();
+      document.getElementById(result+"Sound").currentTime = 0;
       getCategories();
     }, 3000);
   }
@@ -142,9 +146,34 @@ function getGiphy(searchFor){
       console.log(object.data.image_url);
       console.log(searchFor);
       document.getElementById(searchFor).src=object.data.image_url;
-    }
-  )
+    });
 }
-fetch("http://www.freesound.org/apiv2/search/text/?query=cheer&token=pSFga3ykFY6rmFgeYxHiHHXpSfLShJgLju6sts1H")
-  .then(response => response.json())
-  .then(object => console.log(object.results[5]))
+function getRandomNumber(maxLimit){
+  return Math.floor(Math.random() * (maxLimit));
+}
+function getSoundEffectPreview(soundId){
+  console.log(soundId)
+  return fetch("http://www.freesound.org/apiv2/sounds/"+soundId+"/?token=pSFga3ykFY6rmFgeYxHiHHXpSfLShJgLju6sts1H")
+    .then(response => response.json())
+    //.then(object => {console.log(object)});
+}
+function getSoundEffectInfo(soundEffect){
+  let randomNumber = getRandomNumber(15);
+  console.log(randomNumber);
+  fetch("http://www.freesound.org/apiv2/search/text/?query="+soundEffect+"&token=pSFga3ykFY6rmFgeYxHiHHXpSfLShJgLju6sts1H")
+    .then(response => response.json())
+    .then(object => object.results[randomNumber].id)
+    .then(getSoundEffectPreview)
+    .then(object => {
+      console.log(object);
+      console.log(object.previews["preview-lq-mp3"]);
+      //console.log(soundEffect);
+      if (soundEffect == "yay"){
+        correctResultSound.src = object.previews["preview-lq-mp3"]
+      }
+      if (soundEffect == "crowd+boo"){
+        incorrectResultSound.src = object.previews["preview-lq-mp3"]
+      }
+    })
+}
+//getSoundEffectInfo("crowd+boo");
