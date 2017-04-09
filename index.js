@@ -145,3 +145,6 @@ function getGiphy(searchFor){
     }
   )
 }
+fetch("http://www.freesound.org/apiv2/search/text/?query=cheer&token=pSFga3ykFY6rmFgeYxHiHHXpSfLShJgLju6sts1H")
+  .then(response => response.json())
+  .then(object => console.log(object.results[5]))
