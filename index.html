@@ -13,7 +13,7 @@
 <body>
   <div id="intro" class="flex flexcolumn hcenter vcenter">
     <div class="small">Welcome to</div>
-    <div id="gipparodyTitle">GipParody!</div>
+    <div id="gipparodyTitle" data-title="GipParody!">GipParody!</div>
     <div class="small">(What other game show?)</div>
     <div>
       <br /><input type="text" class="input" id="playerName" placeholder="Please enter your name"></input>
@@ -42,7 +42,11 @@
   <script id="gipparody-template" type="text/x-handlebars-template">
     <div class="questionPicker flex flexcolumn" id="{{categoryId}}">
       <div class="title flex hcenter vcenter">{{category}}</div>
-      <div class="points flex hcenter vcenter">${{points}}</div>
+      <!--<div class="points flex hcenter vcenter">${{points}}</div>-->
+    </div>
+    <div class="categoryQuestions" id="{{categoryId}}Questions">
+      <div class="title flex hcenter vcenter">{{category}}</div>
+      <div class="points flex hcenter vcenter" id="{{answerId}}answer">${{points}}</div>
     </div>
     <div class="answerViewer" id={{answerId}}>
       <div class=" flex vcenter flexcolumn hcenter">

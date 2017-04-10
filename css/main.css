@@ -29,7 +29,7 @@ html, body {
  justify-content: space-around;
  flex-wrap: wrap;
 }
-.questionPicker{
+.questionPicker, .categoryQuestions{
   font-family: 'Anton', sans-serif;
   padding:0;
   width:30vw;
@@ -38,13 +38,13 @@ html, body {
   background-color: #1c007d;
   text-align: center;
 }
-.questionPicker .title{
+.questionPicker .title, .categoryQuestions .title{
   height: 20vh;
   font-size: 3vw;
   border: 1vw solid black;
   color: white;
 }
-.questionPicker .points{
+.questionPicker .points, .categoryQuestions .points{
   font-size: 9vw;
   color: #d69f4c;
   height: 20vh;
@@ -133,5 +133,8 @@ html, body {
   height:100vh;
 }
 #correctResult, #incorrectResult{
+  display: none;
+}
+.categoryQuestions{
   display: none;
 }
