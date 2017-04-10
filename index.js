@@ -143,7 +143,7 @@ function Answer (categoryId, category, answerId, answer, question, points){
   }
 }
 function displayTemplate(answerArray){
-  //console.log(answerArray)
+  console.log(answerArray)
   answerArray.forEach(answer => answer.display());
 }
 function formatAnswers(answerObject){
@@ -174,9 +174,9 @@ function getCategories(){
   document.querySelector('.gipparody').innerHTML = "";
   fetch("http://jservice.io/api/random?count=3")
     .then(response => response.json())
-    //.then(array => array.map(formatAnswers))
-    .then(getCategoryAnswers)
-    //.then(displayTemplate)
+    .then(array => array.map(formatAnswers))
+    //.then(getCategoryAnswers)
+    .then(displayTemplate)
     //.then(array => console.log(array))
 }
 function getStarted(){
